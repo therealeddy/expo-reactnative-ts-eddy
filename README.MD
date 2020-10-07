@@ -1,5 +1,5 @@
 <h1 align="center">
-  🚀 React Native TS Eddy 🚀
+  🚀 ReactNative TypeScript Eddy 🚀
 </h1>
 
 <br>
@@ -15,7 +15,7 @@
 
 ## Overview
 
-Advanced template for ReactNative TS.
+Advanced template for ReactNative TypeScript.
 
 - **[Structure](#structure)**
 - **[Installation](#installation)**
@@ -123,7 +123,7 @@ yarn start
 
 ## License
 
-MIT © **[React Eddy](LICENSE)**
+MIT © **[ReactNative TypeScript](LICENSE)**
 
 ## Show your support
 
