@@ -11,7 +11,7 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "prettier --config .prettierrc --write",
+      "prettier --config prettier.config.js --write",
       "eslint --fix --ignore-pattern '!.eslintrc.json'",
       "git add -u"
     ]
