@@ -1,6 +1,6 @@
 {
-  "name": "rntseddy",
-  "version": "1.0.0",
+  "name": "reactnative-typescript-eddy",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
