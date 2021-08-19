@@ -147,10 +147,10 @@ Paste the excerpt below into your file ```package.json```.
     }
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "eslint --fix --ignore-pattern '!.eslintrc.js'",
-      "git add ."
+    "*.{ts,tsx}": [
+      "prettier --config prettier.config.js --write",
+      "eslint --fix --ignore-pattern '!.eslintrc.json'",
+      "git add -u"
     ]
   },
   "config": {
