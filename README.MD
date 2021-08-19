@@ -20,6 +20,7 @@ Advanced template for ReactNative TypeScript.
 - **[Structure](#structure)**
 - **[Installation](#installation)**
 - **[Dependencies](#dependencies)**
+- **[Husky](#husky)**
 - **[ESLint](#eslint)**
 - **[Author](#author)**
 - **[License](#license)**
