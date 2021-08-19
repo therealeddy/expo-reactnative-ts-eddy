@@ -2,25 +2,6 @@
   "name": "rntseddy",
   "version": "1.0.0",
   "private": true,
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
-  },
-  "lint-staged": {
-    "*.{ts,tsx}": [
-      "prettier --config prettier.config.js --write",
-      "eslint --fix --ignore-pattern '!.eslintrc.json'",
-      "git add -u"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
-  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -56,8 +37,6 @@
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/runtime": "^7.8.4",
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
     "@types/jest": "^25.2.3",
     "@types/react-native": "^0.63.2",
     "@types/react-native-vector-icons": "^6.4.6",
@@ -67,10 +46,7 @@
     "@types/yup": "^0.29.7",
     "babel-jest": "^25.1.0",
     "babel-plugin-root-import": "^6.5.0",
-    "commitizen": "^4.2.1",
-    "husky": "^4.3.0",
     "jest": "^25.1.0",
-    "lint-staged": "^10.4.0",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1",
     "typescript": "^3.8.3"
