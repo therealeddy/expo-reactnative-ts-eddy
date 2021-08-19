@@ -114,7 +114,6 @@ Remember to execute the command ```yarn upgrade``` to update with dependencies.
 
 - @types/*
 - typescript
-- husky
 - babel-plugin-root-import
 
 <br><br>
