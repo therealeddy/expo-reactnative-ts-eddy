@@ -112,11 +112,9 @@ Remember to execute the command ```yarn upgrade``` to update with dependencies.
 
 **Dev Dependencies:**
 
-- @types/yup
+- @types/*
 - typescript
 - husky
-- eslint
-- prettier
 
 <br><br>
 
