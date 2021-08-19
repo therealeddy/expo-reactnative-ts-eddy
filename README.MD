@@ -6,7 +6,7 @@
 
 <div align="center">
 
-[![version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/therealeddy/reactnative-typescript-eddy/releases)<space><space>
+[![version](https://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/therealeddy/reactnative-typescript-eddy/releases)<space><space>
 [![documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](#overview)
 
 </div>
