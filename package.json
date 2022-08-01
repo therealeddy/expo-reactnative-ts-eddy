@@ -2,18 +2,6 @@
   "name": "expo-reactnative-ts-eddy",
   "version": "2.0.0",
   "main": "index.js",
-  "scripts": {
-    "start": "expo start --dev-client",
-    "android": "expo run:android",
-    "ios": "expo run:ios",
-    "web": "expo start --web"
-  },
-  "resolutions": {
-    "@types/react": "~17.0.21"
-  },
-  "overrides": {
-    "@types/react": "^17"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
@@ -32,6 +20,18 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "resolutions": {
+    "@types/react": "~17.0.21"
+  },
+  "overrides": {
+    "@types/react": "^17"
+  },
+  "scripts": {
+    "start": "expo start --dev-client",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web"
   },
   "dependencies": {
     "@expo-google-fonts/poppins": "^0.2.2",

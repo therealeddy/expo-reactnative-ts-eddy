@@ -22,6 +22,8 @@ import { store, persistor } from './store';
 import Routes from './routes';
 import theme from './global/styles/theme';
 
+// teste
+
 LogBox.ignoreLogs(['expo-app-loading']);
 
 export default function App() {
