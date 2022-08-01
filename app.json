@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "gofinances",
-    "slug": "gofinances",
+    "name": "expo-reactnative-ts-eddy",
+    "slug": "expo-reactnative-ts-eddy",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"

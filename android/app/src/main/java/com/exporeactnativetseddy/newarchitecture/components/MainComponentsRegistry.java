@@ -1,4 +1,4 @@
-package com.gofinances.newarchitecture.components;
+package com.exporeactnativetseddy.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
