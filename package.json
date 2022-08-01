@@ -2,6 +2,13 @@
   "name": "expo-reactnative-ts-eddy",
   "version": "2.0.0",
   "main": "index.js",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --config prettier.config.js --write",
+      "eslint --fix --ignore-pattern '!.eslintrc.json'",
+      "git add -u"
+    ]
+  },
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
