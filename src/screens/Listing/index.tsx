@@ -47,7 +47,7 @@ const Dashbord: React.FC = () => {
 
   return (
     <Container>
-      <Header title="Listagem" />
+      <Header title="Listing" />
 
       <Content>
         <Title>Horizontal</Title>
