@@ -1,25 +1,49 @@
-import 'react-native-gesture-handler';
-import '~/config/ReactotronConfig';
-
 import React from 'react';
+
+import './config/reactotron';
+
+import AppLoading from 'expo-app-loading';
+
+import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import { LogBox } from 'react-native';
 
-import { StatusBar } from 'react-native';
+import {
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_700Bold,
+  useFonts,
+} from '@expo-google-fonts/poppins';
+
 import { NavigationContainer } from '@react-navigation/native';
-import { store, persistor } from '~/store';
+import { store, persistor } from './store';
 
-import Routes from '~/routes';
+import Routes from './routes';
+import theme from './global/styles/theme';
 
-const App: React.FC = () => (
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <NavigationContainer>
-        <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
-        <Routes />
-      </NavigationContainer>
-    </PersistGate>
-  </Provider>
-);
+LogBox.ignoreLogs(['expo-app-loading']);
 
-export default App;
+export default function App() {
+  const [fontsLoaded] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
+
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <NavigationContainer>
+            <Routes />
+          </NavigationContainer>
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
+  );
+}

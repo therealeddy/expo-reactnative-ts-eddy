@@ -1,20 +1,81 @@
 import React from 'react';
+import { Platform } from 'react-native';
+import { useTheme } from 'styled-components';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Dashboard from '~/pages/Dashboard';
+import { MaterialIcons } from '@expo/vector-icons';
 
-const App = createStackNavigator();
+import { Listing, FormExample, ScreenTab, ScreenStack } from '../screens';
 
-const AppRoutes: React.FC = () => {
-  const screenOptions = {
-    headerShown: false,
-    cardStyle: { backgroundColor: '#7159c1' },
-  };
+export type RootStackParamList = {
+  Home: undefined;
+  'Screen Stack': undefined;
+};
+
+const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
+
+const Home: React.FC = () => {
+  const theme = useTheme();
 
   return (
-    <App.Navigator screenOptions={screenOptions}>
-      <App.Screen name="Dashboard" component={Dashboard} />
-    </App.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: theme.colors.primary,
+        tabBarInactiveTintColor: theme.colors.third,
+        tabBarLabelPosition: 'beside-icon',
+        tabBarStyle: {
+          height: 88,
+          paddingVertical: Platform.OS === 'ios' ? 20 : 0,
+        },
+      }}
+    >
+      <Tab.Screen
+        name="Listing"
+        component={Listing}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialIcons
+              color={color}
+              size={size}
+              name="format-list-bulleted"
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Form Example"
+        component={FormExample}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialIcons color={color} size={size} name="dynamic-form" />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Screen Tab"
+        component={ScreenTab}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialIcons color={color} size={size} name="fit-screen" />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+};
+
+const AppRoutes: React.FC = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="Home"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Screen Stack" component={ScreenStack} />
+    </Stack.Navigator>
   );
 };
 

@@ -5,7 +5,7 @@ import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { Action } from 'redux';
 
 import { AxiosResponse } from 'axios';
-import api from '~/services/api';
+import api from '../../../services/api';
 
 import { signInSuccess, signFailure, signInRequest } from './actions';
 import { ActionTypes } from './types';
@@ -31,7 +31,7 @@ export function* signIn({ payload }: SignIn): Generator {
       data: { token },
     } = response as AxiosResponse<ISignInResponse>;
 
-    api.defaults.headers.Authorization = `Bearer ${token}`;
+    api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token));
   } catch (err) {
@@ -56,7 +56,7 @@ export function* setToken({ payload }: Action): Generator {
 
   const { token } = payload.auth;
 
-  api.defaults.headers.Authorization = `Bearer ${token}`;
+  api.defaults.headers.common.Authorization = `Bearer ${token}`;
 
   yield true;
 }

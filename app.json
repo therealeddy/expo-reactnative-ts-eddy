@@ -1,4 +1,10 @@
 {
-  "name": "rntseddy",
-  "displayName": "rntseddy"
+  "expo": {
+    "name": "gofinances",
+    "slug": "gofinances",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
 }
