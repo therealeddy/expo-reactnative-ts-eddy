@@ -7,7 +7,7 @@ import AppLoading from 'expo-app-loading';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { LogBox } from 'react-native';
+import { LogBox, StatusBar } from 'react-native';
 
 import {
   Poppins_400Regular,
@@ -40,6 +40,7 @@ export default function App() {
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
           <NavigationContainer>
+            <StatusBar barStyle="light-content" backgroundColor="#000000" />
             <Routes />
           </NavigationContainer>
         </ThemeProvider>

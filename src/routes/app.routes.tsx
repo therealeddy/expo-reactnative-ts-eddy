@@ -6,11 +6,16 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { Listing, FormExample, ScreenTab, ScreenStack } from '../screens';
+import {
+  Listing,
+  FormExample,
+  ScreenTab,
+  ScreenStack,
+  Splash,
+} from '../screens';
 
 export type RootStackParamList = {
-  Home: undefined;
-  'Screen Stack': undefined;
+  [key: string]: undefined;
 };
 
 const Tab = createBottomTabNavigator();
@@ -70,9 +75,10 @@ const Home: React.FC = () => {
 const AppRoutes: React.FC = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Splash"
       screenOptions={{ headerShown: false }}
     >
+      <Stack.Screen name="Splash" component={Splash} />
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Screen Stack" component={ScreenStack} />
     </Stack.Navigator>
