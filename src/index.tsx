@@ -1,25 +1,63 @@
-import 'react-native-gesture-handler';
-import '~/config/ReactotronConfig';
+import React, { useEffect, useCallback, useState } from 'react';
 
-import React from 'react';
+import './config/reactotron';
+
+import { View } from 'react-native';
+
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import { StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { store, persistor } from '~/store';
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
 
-import Routes from '~/routes';
+import {
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_700Bold,
+} from '@expo-google-fonts/poppins';
 
-const App: React.FC = () => (
-  <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
-      <NavigationContainer>
-        <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
-        <Routes />
-      </NavigationContainer>
-    </PersistGate>
-  </Provider>
-);
+import AppRoot from './App';
+import { store, persistor } from './store';
 
-export default App;
+export default function App() {
+  const [appIsReady, setAppIsReady] = useState(false);
+
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+        await Font.loadAsync({
+          Poppins_400Regular,
+          Poppins_500Medium,
+          Poppins_700Bold,
+        });
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  if (!appIsReady) {
+    return null;
+  }
+
+  return (
+    <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppRoot />
+        </PersistGate>
+      </Provider>
+    </View>
+  );
+}

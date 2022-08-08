@@ -1,4 +1,14 @@
 {
-  "name": "rntseddy",
-  "displayName": "rntseddy"
+  "expo": {
+    "name": "expo-reactnative-ts-eddy",
+    "slug": "expo-reactnative-ts-eddy",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "splash": {
+      "image": "./assets/splash.png",
+      "backgroundColor": "#000000"
+    }
+  }
 }

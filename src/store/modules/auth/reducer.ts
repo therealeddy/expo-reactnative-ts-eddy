@@ -4,6 +4,7 @@ import { IAuthState, ActionTypes } from './types';
 
 const INITIAL_STATE: IAuthState = {
   token: '',
+  themeType: 'light',
   signed: false,
   loading: false,
 };
