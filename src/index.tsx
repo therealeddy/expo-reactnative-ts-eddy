@@ -2,11 +2,6 @@ import React, { useEffect, useCallback, useState } from 'react';
 
 import './config/reactotron';
 
-import { View } from 'react-native';
-
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
-
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 
@@ -16,8 +11,13 @@ import {
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
 
-import AppRoot from './App';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
 import { store, persistor } from './store';
+
+import AppRoot from './App';
+import { LayoutRootView } from './styles/global';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -52,12 +52,12 @@ export default function App() {
   }
 
   return (
-    <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
+    <LayoutRootView onLayout={onLayoutRootView}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <AppRoot />
         </PersistGate>
       </Provider>
-    </View>
+    </LayoutRootView>
   );
 }
