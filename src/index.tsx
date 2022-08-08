@@ -1,50 +1,63 @@
-import React from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 
 import './config/reactotron';
 
-import AppLoading from 'expo-app-loading';
+import { View } from 'react-native';
 
-import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import { LogBox, StatusBar } from 'react-native';
+
+import * as SplashScreen from 'expo-splash-screen';
+import * as Font from 'expo-font';
 
 import {
   Poppins_400Regular,
   Poppins_500Medium,
   Poppins_700Bold,
-  useFonts,
 } from '@expo-google-fonts/poppins';
 
-import { NavigationContainer } from '@react-navigation/native';
+import AppRoot from './App';
 import { store, persistor } from './store';
 
-import Routes from './routes';
-import theme from './global/styles/theme';
-
-LogBox.ignoreLogs(['expo-app-loading']);
-
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    Poppins_400Regular,
-    Poppins_500Medium,
-    Poppins_700Bold,
-  });
+  const [appIsReady, setAppIsReady] = useState(false);
 
-  if (!fontsLoaded) {
-    return <AppLoading />;
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await SplashScreen.preventAutoHideAsync();
+        await Font.loadAsync({
+          Poppins_400Regular,
+          Poppins_500Medium,
+          Poppins_700Bold,
+        });
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+      await SplashScreen.hideAsync();
+    }
+  }, [appIsReady]);
+
+  if (!appIsReady) {
+    return null;
   }
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <ThemeProvider theme={theme}>
-          <NavigationContainer>
-            <StatusBar barStyle="light-content" backgroundColor="#000000" />
-            <Routes />
-          </NavigationContainer>
-        </ThemeProvider>
-      </PersistGate>
-    </Provider>
+    <View onLayout={onLayoutRootView} style={{ flex: 1 }}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppRoot />
+        </PersistGate>
+      </Provider>
+    </View>
   );
 }

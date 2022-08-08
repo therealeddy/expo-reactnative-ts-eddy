@@ -7,6 +7,7 @@ export const ActionTypes = {
 
 export interface IAuthState {
   token: string;
+  themeType: 'light' | 'dark';
   signed: boolean;
   loading: boolean;
 }
