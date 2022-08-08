@@ -29,13 +29,16 @@ Advanced template for Expo React Native TypeScript.
 ## Structure
 
 - ```@types``` - Application types
+- ```assets``` - Application assets
 - ```components``` - Application components
 - ```config``` - Configuration files
-- ```screens``` - Application screens
 - ```routes``` - Route configuration
+- ```screens``` - Application screens
 - ```services``` - API configuration
 - ```store``` - Redux and Redux Saga configuration
+- ```styles``` - Application styles
 - ```utils``` - Useful files
+- ```App.tsx``` - App application
 - ```index.tsx``` - Render application
 
 <br><br>
